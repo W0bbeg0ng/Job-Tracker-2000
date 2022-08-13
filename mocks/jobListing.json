@@ -1,0 +1,11 @@
+{
+  "id": "string", // does postgres autogen ids?
+  "jobTitle": "string",
+  "url": "string",
+  "status": "enum", 
+  // started application, applied, interview scheduled, declined
+  "starred": "boolean",
+  "companyId": "string", // foreign key to company
+  "userId": "string", // foreign key to user
+  "dateCreated": "timestamp"
+}

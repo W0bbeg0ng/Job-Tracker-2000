@@ -1,0 +1,10 @@
+{
+  "id": "string",
+  "name": "string",
+  "url": "string",
+  "dateCreated": "string",
+  "dateLastChecked": "string",
+  "starred": "boolean",
+  "userId": "string", // foreign key to user
+  "isHidden": "boolean"
+}
