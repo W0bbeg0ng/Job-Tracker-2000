@@ -3,19 +3,29 @@ const path = require('path');
 const pg = require('pg');
 const cookieParser = require('cookie-parser');
 const port = 3000;
+const loginControllers = require('./routes/loginControllers');
 
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
-const pgURI = '';
-
 
 
 app.get('/api', (req, res) => {
-  return res.status(200).send('hello!');
+  console.log(name);
 });
+
+app.post('/signup', loginControllers.createUser, (req, res) => {
+  return res.status(200).send(res.locals.userCreated);  //redirect to login
+});
+
+app.post('/login', loginControllers.verifyUser, (req, res) => {
+  return res.status(200).send(res.locals.currUser);    //Where do I redirect users when logged in?
+});
+
+
+
 
 // global error handler
 app.use((err, req, res, next) => {
