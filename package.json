@@ -1,0 +1,54 @@
+{
+  "name": "job-tracker-2000",
+  "version": "1.0.0",
+  "description": "Improving job application tracking.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --node-env production",
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack serve\" \"cross-env NODE_ENV=development nodemon src/server/index.js \"",
+    "start": "nodemon src/server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/W0bbeg0ng/Job-Tracker-2000.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/W0bbeg0ng/Job-Tracker-2000/issues"
+  },
+  "homepage": "https://github.com/W0bbeg0ng/Job-Tracker-2000#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "pg": "^8.7.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^8.2.5",
+    "concurrently": "^7.3.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.21.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.19",
+    "preset-react": "^1.0.0",
+    "sass": "^1.54.4",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0"
+  }
+}
