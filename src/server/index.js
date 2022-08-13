@@ -1,5 +1,5 @@
-const path = require('path');
 const express = require('express');
+const path = require('path');
 const pg = require('pg');
 const cookieParser = require('cookie-parser');
 const port = 3000;
@@ -18,7 +18,7 @@ app.get('/api', (req, res) => {
 });
 
 // global error handler
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express Error handler caught in unknown middleware err',
     status: 500,
