@@ -5,7 +5,7 @@ import CompanyList from "./CompanyList"
 
 const Container = (props) => {
   return (
-   <div>
+   <div className = "container">
     <h1>Tabs Test</h1>
       
      <TabsContainer>
