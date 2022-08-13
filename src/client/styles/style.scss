@@ -1,5 +1,19 @@
 body {
   color: whitesmoke;
-  background-color: black;
+  background-color: lightgrey;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+div {
+  border: 1px solid black;
+  width: 100%;
+  min-height: 100px;
+}
+
+.jobsTab {
+  background-color: pink;
+}
+
+.companiesTab {
+  background-color: blanchedalmond;
 }
