@@ -1,15 +1,6 @@
 import React, { useEffect } from 'react';
 
-// const test = {
-//     jobTitle: "Sr. Software Engineer",
-//     companyName: "Google",
-//     jobListingUrl: "http://www.google.com",
-//     dateLastChecked: "08-08-08",
-//     starred: false,
-//     status: "applied",
-//     starOnClick: "func"
 
-// }
 
 const JobDisplay = (props) => {
     useEffect(() => {
