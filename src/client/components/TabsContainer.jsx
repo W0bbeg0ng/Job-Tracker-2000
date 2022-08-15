@@ -1,28 +1,15 @@
 import React, { Component } from "react";
 import JobList from './JobList.jsx';
 import CompanyList from './CompanyList.jsx';
-import PropTypes from 'prop-types';
+
 import Tab from './Tab'
 
 
-// const TabsContainer = (props) => {
-//   return (
-//    <div className="tabsContainer">
-//     containerTest
-      
-//       <JobList/>
-//       <CompanyList/>
-    
-//     </div>);
-// }
 
-// export default TabsContainer;
 
 
 class TabsContainer extends Component {
-  static propTypes = {
-    children: PropTypes.instanceOf(Array).isRequired,
-  }
+ 
 
   constructor(props) {
     super(props);
