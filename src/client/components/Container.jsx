@@ -31,7 +31,6 @@ const test = {testList: [{
 const Container = (props) => {
   return (
    <div className = "container">
-    <h1>Tabs Test</h1>
       
      <TabsContainer>
        <div label = "Jobs">

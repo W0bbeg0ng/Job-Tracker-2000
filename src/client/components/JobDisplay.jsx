@@ -9,40 +9,40 @@ const JobDisplay = (props) => {
         statusElement.setAttribute("selected","selected");
     });
     return (
-        <div className= "jobDisplay">
-            <div className="starButton">
-              <input type="image" src= "https://upload.wikimedia.org/wikipedia/commons/2/29/Gold_Star.svg" />
+        <div className="jobDisplay card">
+            <div className="card-body">
+                <div className="left">
+                    <h3>
+                        <button className="bi-star"></button>
+                        <a href={props.jobListingUrl}>{props.jobTitle}</a>
+                    </h3>
+                    <a href='#'>{props.companyName}</a><br/>
+                    date saved: {props.dateLastChecked}<br/><br/>
+                </div>
+                <div className="right">
+                    <label for="status">Status:</label>
+                    <select className="form-select" name="status" id="status">
+                        <option value="interested" id="interested">
+                            Interested
+                        </option>
+                        <option value="applied" id="applied">
+                            Applied
+                        </option>
+                        <option value="interviewing" id="interviewing">
+                            Interviewing
+                        </option>
+                        <option value="declined" id="declined">
+                            Declined
+                        </option>
+                    </select>
+                    <label for="notesField">Notes:</label>
+                    <div contentEditable="true" id="notesField">
+                    {props.notesText}
+                    </div>
+                </div>
             </div>
-           
-            <div className= "jobTitle">
-               {props.jobTitle}
-            </div>
-            <div className= "jobCompanyName">
-               {props.companyName}
-            </div>
-            <div className= "jobListingUrl">
-              <a href = {props.jobListingUrl}>Job Listing</a>
-            </div>
-            <div className= "jobDateLastChecked">
-               {props.dateLastChecked}
-            </div>
-            <label for="status">Status</label>
-            <select name="status" id="status">
-                <option value="interested" id = "interested">Interested</option>
-                <option value="applied" id = "applied">Applied</option>
-                <option value="interviewing" id = "interviewing">Interviewing</option>
-                <option value="declined" id = "declined">Declined</option>
-            </select>
-            <div id="notes">
-               Notes
-               <div contenteditable="true" id = "notesField">
-                    {props.notesText} 
-               </div>
-            </div>
-           
-
         </div>
-    )
+    );
 }
 
 export default JobDisplay;
