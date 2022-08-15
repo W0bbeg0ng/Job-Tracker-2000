@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TabsContainer from "./TabsContainer";
 import JobList from "./JobList";
 import CompanyList from "./CompanyList"
+import NewJobForm from "./NewJobForm"
 
 const test = {testList: [{
   jobTitle: "Sr. Software Engineer",
@@ -29,12 +30,23 @@ const test = {testList: [{
 }]}
 
 const Container = (props) => {
+
+
+//  useEffect(() => {
+//   const response = await fetch ("/api", {
+//     method: "GET",
+//     headers: {"Content-Type": "application/json"},
+//     body: JSON.stringify({username})
+//   })
+//  })
+  
   return (
    <div className = "container">
     <h1>Tabs Test</h1>
       
      <TabsContainer>
        <div label = "Jobs">
+        <NewJobForm />
         <JobList testList = {test.testList}/>
        </div>
        <div label = "Companies">
