@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import TabsContainer from "./TabsContainer";
 import JobList from "./JobList";
-import CompanyList from "./CompanyList"
-import NewJobForm from "./NewJobForm"
+import CompanyList from "./CompanyList";
+
 
 const test = {testList: [{
   jobTitle: "Sr. Software Engineer",
@@ -31,23 +31,49 @@ const test = {testList: [{
 
 const Container = (props) => {
 
+  const [data, setData] = useState([]);
 
-//  useEffect(() => {
-//   const response = await fetch ("/api", {
-//     method: "GET",
-//     headers: {"Content-Type": "application/json"},
-//     body: JSON.stringify({username})
-//   })
-//  })
-  
+  async function getJobData() {
+    const response = await fetch("/api/jobs", 
+    {method: "GET", 
+     headers: {"Content-Type": "application/json"},
+
+            }
+    );
+    const jobList = await response.json();
+    console.log("jobList",jobList);
+    // return data;
+    const newJobList = jobList.map(element => {
+
+  const newElement = {jobTitle: element.jobtitle,
+  companyName: element.company_id,
+  jobListingUrl: element.url,
+  dateCreated: element.datecreated,
+  starred: element.starred,
+  status: element.status,
+ 
+  notesText: element.note,};
+  return newElement;
+ 
+
+    });
+    
+  setData(newJobList);
+  }
+
+  useEffect(() => {
+
+    getJobData();
+    // setData(newData);
+
+  },[])
   return (
    <div className = "container">
     <h1>Tabs Test</h1>
       
      <TabsContainer>
        <div label = "Jobs">
-        <NewJobForm />
-        <JobList testList = {test.testList}/>
+        <JobList testList = {data}/>
        </div>
        <div label = "Companies">
         <CompanyList />
