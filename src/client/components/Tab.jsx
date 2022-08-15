@@ -24,9 +24,11 @@ class Tab extends Component {
     } = this;
 
     let className = 'nav-item';
+    let linkClass = 'nav-link'
 
     if (activeTab === label) {
       className += ' active';
+      linkClass += ' active'
     }
 
     return (
@@ -34,7 +36,7 @@ class Tab extends Component {
         className={className}
         onClick={onClick}
       >
-        <a class="nav-link" href="#">{label}</a>
+        <a class={linkClass} href="#">{label}</a>
       </li>
     );
   }
