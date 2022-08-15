@@ -5,12 +5,18 @@ const test = {
     companyName: "Google",
     jobListingUrl: "http://www.google.com",
     dateLastChecked: "08-08-08",
+    starred: false,
+    status: "interested"
 
 }
 
 const JobDisplay = (props) => {
     return (
         <div className= "jobDisplay">
+            <div className="starButton">
+              <input type="image" src= "https://upload.wikimedia.org/wikipedia/commons/2/29/Gold_Star.svg" />
+            </div>
+           
             <div className= "jobTitle">
                {test.jobTitle}
             </div>
@@ -36,6 +42,7 @@ const JobDisplay = (props) => {
 
                </div>
             </div>
+           
 
         </div>
     )
