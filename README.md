@@ -1,6 +1,7 @@
 # Job-Tracker-2000
 Improving job application tracking.
 
+
 Database table creation:
 
 user:
@@ -39,3 +40,5 @@ CREATE TABLE company (
   starred boolean,
   user_id bigint references users(_id)
 );
+
+
