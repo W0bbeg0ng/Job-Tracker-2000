@@ -49,7 +49,7 @@ loginControllers.verifyUser = (req, res, next) => {
       return next(); 
     })
     .catch(err => {
-      console.log('entered errror')
+      console.log('entered errror');
       return next({
         log: 'Express Error handler caught in verifyUser err',
         status: 500,
