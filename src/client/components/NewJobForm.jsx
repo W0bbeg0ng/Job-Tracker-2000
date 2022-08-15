@@ -9,17 +9,17 @@ const NewJobForm = (props) => {
 
     async function onSubmit(event) {
       event.preventDefault();
-      const response = await fetch("/api", {
+      const response = await fetch("/api/jobs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          jobTitle: jobInput, companyName: companyInput, jobListingUrl: urlInput}),
+          jobTitle: jobInput, companyName: companyInput, Url: urlInput}),
         });
         
       
-       ;
+       
       const data = await response.json();
       console.log(data);
     }

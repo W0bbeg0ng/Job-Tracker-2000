@@ -33,7 +33,7 @@ company:
 CREATE TABLE company (
   _id serial NOT NULL PRIMARY KEY,
   name varchar NOT NULL,
-  url varchar NOT NULL,
+  url varchar,
   linkedin_url varchar,
   date_created date,
   date_last_checked date,

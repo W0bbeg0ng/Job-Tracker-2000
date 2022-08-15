@@ -26,8 +26,8 @@ userController.getJobs = (req, res, next) => {
 userController.postJob = (req, res, next) => {
   // grab all parameters user can post- even if it isnt inputted
   // check if company name exists in input- else create new company in company table
-  const { jobtitle, url, status, note, company } = req.body;
-  const arr = [jobtitle, url, status, note, res.locals.name, company, false, new Date().toISOString().slice(0, 10)];
+  const { jobTitle, Url, status, note, companyName } = req.body;
+  const arr = [jobTitle, Url, status, note, res.locals.name, companyName, false, new Date().toISOString().slice(0, 10)];
   console.log(arr);
   const jobQuery = 'INSERT INTO joblistings(jobtitle, url, status, note, user_id, company_id, starred, dateCreated) VALUES ($1,$2,$3,$4,(SELECT _id FROM users WHERE name = $5),(SELECT _id FROM company WHERE name = $6), $7, $8)';
   // 'INSERT INTO users (name) VALUES ($1)'
