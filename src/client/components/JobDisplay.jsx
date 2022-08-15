@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const test = {
-    jobTitle: "Sr. Software Engineer",
-    companyName: "Google",
-    jobListingUrl: "http://www.google.com",
-    dateLastChecked: "08-08-08",
-    starred: false,
-    status: "interested"
+// const test = {
+//     jobTitle: "Sr. Software Engineer",
+//     companyName: "Google",
+//     jobListingUrl: "http://www.google.com",
+//     dateLastChecked: "08-08-08",
+//     starred: false,
+//     status: "applied",
+//     starOnClick: "func"
 
-}
+// }
 
 const JobDisplay = (props) => {
+    useEffect(() => {
+        console.log(document.getElementById(props.status));
+        const statusElement = document.getElementById(props.status);
+        statusElement.setAttribute("selected","selected");
+    });
     return (
         <div className= "jobDisplay">
             <div className="starButton">
@@ -18,28 +24,28 @@ const JobDisplay = (props) => {
             </div>
            
             <div className= "jobTitle">
-               {test.jobTitle}
+               {props.jobTitle}
             </div>
             <div className= "jobCompanyName">
-               {test.companyName}
+               {props.companyName}
             </div>
             <div className= "jobListingUrl">
-              <a href = {test.jobListingUrl}>Job Listing</a>
+              <a href = {props.jobListingUrl}>Job Listing</a>
             </div>
             <div className= "jobDateLastChecked">
-               {test.dateLastChecked}
+               {props.dateLastChecked}
             </div>
             <label for="status">Status</label>
             <select name="status" id="status">
-                <option value="interested">Interested</option>
-                <option value="applied">Applied</option>
-                <option value="interviewing">Interviewing</option>
-                <option value="declined">Declined</option>
+                <option value="interested" id = "interested">Interested</option>
+                <option value="applied" id = "applied">Applied</option>
+                <option value="interviewing" id = "interviewing">Interviewing</option>
+                <option value="declined" id = "declined">Declined</option>
             </select>
             <div id="notes">
                Notes
                <div contenteditable="true" id = "notesField">
-
+                    {props.notesText} 
                </div>
             </div>
            
