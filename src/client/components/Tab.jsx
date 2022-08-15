@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+
 
 
 class Tab extends Component {
-//   static propTypes = {
-//     activeTab: PropTypes.string.isRequired,
-//     label: PropTypes.string.isRequired,
-//     onClick: PropTypes.func.isRequired,
-//   };
+
 
   onClick = () => {
     const { label, onClick } = this.props;
@@ -23,10 +19,12 @@ class Tab extends Component {
       },
     } = this;
 
-    let className = 'tab-list-item';
+    let className = 'nav-item';
+    let linkClass = 'nav-link'
 
     if (activeTab === label) {
-      className += ' tab-list-active';
+      className += ' active';
+      linkClass += ' active'
     }
 
     return (
@@ -34,7 +32,7 @@ class Tab extends Component {
         className={className}
         onClick={onClick}
       >
-        {label}
+        <a class={linkClass} href="#">{label}</a>
       </li>
     );
   }

@@ -3,18 +3,40 @@ const path = require('path');
 const pg = require('pg');
 const cookieParser = require('cookie-parser');
 const port = 3000;
-
 const app = express();
+const loginControllers = require('./controllers/loginControllers');
+
+//jwt
+const dotenv = require('dotenv').config('../.env');
+const jwt = require('jsonwebtoken');
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
-const pgURI = '';
+const apiRouter = require('./routes/api');
 
 
-
-app.get('/api', (req, res) => {
+//loading of initial html single page source
+app.get('/', (req, res) => {
   return res.status(200).send('hello!');
+});
+
+//handles all router paths
+app.use('/api', apiRouter);
+
+app.post('/signup', loginControllers.createUser, (req, res) => {
+  return res.status(200).send('registered!');  //redirect to login
+});
+
+// this is the endpoint for logging in
+app.post('/login', loginControllers.verifyUser, loginControllers.createToken, (req, res) => {
+  return res.status(200).send('logged in!');
+});
+
+// this is a template for authentication on any of our homepage routes 
+app.get('/afterLogin', loginControllers.checkForToken, loginControllers.verifyToken, (req, res) => {
+  res.status(200).send('you can enter');
 });
 
 // global error handler
