@@ -11,8 +11,8 @@ router.get('/jobs', loginControllers.checkForToken, loginControllers.verifyToken
 });
 
 // post request for user to add to their list of applications
-router.post('/jobs', userController.postJob, ( req, res ) => {
-  return res.status(200).json({ job: res.locals.job });
+router.post('/jobs', loginControllers.checkForToken, loginControllers.verifyToken, userController.postJob, ( req, res ) => {
+  return res.status(200).json(res.locals.job);
 });
 
 
