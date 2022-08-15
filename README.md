@@ -6,9 +6,9 @@ Database table creation:
 
 user:
 CREATE TABLE users(
-  _id bigint primary key,
+  _id serial NOT NULL PRIMARY KEY,
   name varchar UNIQUE NOT NULL,
-  password varchar NOT NULL,
+  password varchar,
   date_created date
 );
 
@@ -17,7 +17,7 @@ jobListings:
 CREATE TYPE status AS ENUM ('started application', 'applied', 'interview scheduled', 'declined');
 
 CREATE TABLE jobListings(
-    _id bigint primary key,
+    _id serial NOT NULL PRIMARY KEY,
     jobTitle varchar NOT NULL,
     url varchar NOT NULL,
     status status,
@@ -31,7 +31,7 @@ CREATE TABLE jobListings(
 
 company:
 CREATE TABLE company (
-  _id bigint primary key,
+  _id serial NOT NULL PRIMARY KEY,
   name varchar NOT NULL,
   url varchar NOT NULL,
   linkedin_url varchar,
