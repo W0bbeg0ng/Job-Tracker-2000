@@ -5,9 +5,9 @@ const userController = {};
 userController.getJobs = (req, res, next) => {
   // grab get parameters (username id) to query all job listings: 
   //! assume that the passed in parameters in userId is req.params.id 
-  const jobQuery = 'SELECT joblistings.*, company.name AS company_id FROM joblistings INNER JOIN company ON company_id = joblistings.company_id WHERE joblistings.user_id= $1 ';
-  const userId = [req.params.id];
-  console.log('this is req.params.id', req.params.id, 'this is userId', userId);
+  const jobQuery = 'SELECT joblistings.*, company.name AS company_id FROM joblistings INNER JOIN company ON company_id = joblistings.company_id WHERE joblistings.user_id= (SELECT _id FROM users WHERE name = $1)';
+  const userId = [res.locals.name];
+  console.log('this is userId', userId);
   db.query( jobQuery, userId )
     .then((result) => {
       console.log(result.rows);
