@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TabsContainer from "./TabsContainer";
 import JobList from "./JobList";
 import CompanyList from "./CompanyList";
+import NewJobForm from "./NewJobForm";
 
 
 const test = {testList: [{
@@ -73,6 +74,7 @@ const Container = (props) => {
       
      <TabsContainer>
        <div label = "Jobs">
+        <NewJobForm />
         <JobList testList = {data}/>
        </div>
        <div label = "Companies">
