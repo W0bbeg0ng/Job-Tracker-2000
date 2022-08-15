@@ -4,7 +4,7 @@ const pg = require('pg');
 const cookieParser = require('cookie-parser');
 const port = 3000;
 const app = express();
-const loginControllers = require('./routes/loginControllers');
+const loginControllers = require('./controllers/loginControllers');
 
 //jwt
 const dotenv = require('dotenv').config('../.env');
@@ -14,34 +14,30 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
+const apiRouter = require('./routes/api');
 
 
-
-
-
-
-app.get('/api', (req, res) => {
-  console.log('hi');
+//loading of initial html single page source
+app.get('/', (req, res) => {
+  return res.status(200).send('hello!');
 });
+
+//handles all router paths
+app.use('/api', apiRouter);
 
 app.post('/signup', loginControllers.createUser, (req, res) => {
-  return res.status(200).redirect('/login');  //redirect to login
+  return res.status(200).send('registered!');  //redirect to login
 });
 
-app.post('/login', 
-  loginControllers.verifyUser,
-  loginControllers.createToken, 
-  (req, res) => {
-    console.log('got to the end');
-    return res.status(200).redirect('/afterLogin');    //Where do I redirect users when logged in?
-  });
+// this is the endpoint for logging in
+app.post('/login', loginControllers.verifyUser, loginControllers.createToken, (req, res) => {
+  return res.status(200).send('logged in!');
+});
 
-//temp rout to test token
+// this is a template for authentication on any of our homepage routes 
 app.get('/afterLogin', loginControllers.checkForToken, loginControllers.verifyToken, (req, res) => {
   res.status(200).send('you can enter');
 });
-
-
 
 // global error handler
 app.use((err, req, res, next) => {

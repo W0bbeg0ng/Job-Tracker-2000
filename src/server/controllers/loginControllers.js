@@ -67,6 +67,7 @@ loginControllers.createToken = (req, res, next) => {
   const { name } = req.body;
   jwt.sign({name}, process.env.JWT_SECRET, { expiresIn: '72h'}, (err, token) => {
     res.locals.myToken = {token};
+    console.log(token);
     res.cookie('authorization', token, { HttpOnly: true});
     next();
   });
@@ -78,10 +79,15 @@ loginControllers.checkForToken = (req, res, next) => {
   const token = req.cookies.authorization;
   if(typeof token !== 'undefined') {
     req.token = token;
-    next();
+    return next();
   } else {
-    //If header is undefined return Forbidden (403)
-    res.sendStatus(401);
+    //If header is undefined return (401)
+    // res.sendStatus(401);
+    return next({
+      log: 'Express error handler caught in loginControllers.verifyToken middleware error',
+      status: 401,
+      message: { err: 'Could not connect to the protected route' },
+    });
   }
 };
 
@@ -89,16 +95,23 @@ loginControllers.verifyToken = (req, res, next) => {
   //verify the JWT token generated for the user
   jwt.verify(req.token, process.env.JWT_SECRET, (err, authorizedData) => {
     if(err){
-      //If error send Forbidden (403)
+      //If error send (401)
       console.log('ERROR: Could not connect to the protected route');
-      res.sendStatus(401);
+      // res.sendStatus(401);
+      return next({
+        log: 'Express error handler caught in loginControllers.verifyToken middleware error',
+        status: 401,
+        message: { err: 'Could not connect to the protected route' },
+      });
     } else {
       //If token is successfully verified, we can send the autorized data 
-      res.json({
-        message: 'Successful log in',
-        authorizedData
-      });
+      res.locals.name = authorizedData.name;
+      // res.json({
+      //   message: 'Successful log in',
+      //   authorizedData
+      // });
       console.log('SUCCESS: Connected to protected route');
+      return next();
     }
   });
 };
