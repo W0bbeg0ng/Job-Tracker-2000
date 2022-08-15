@@ -9,13 +9,16 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
-const pgURI = '';
+const apiRouter = require('./routes/api');
 
 
-
-app.get('/api', (req, res) => {
+//loading of initial html single page source
+app.get('/', (req, res) => {
   return res.status(200).send('hello!');
 });
+
+//handles all router paths
+app.use('/api', apiRouter);
 
 // global error handler
 app.use((err, req, res, next) => {
