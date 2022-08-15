@@ -1,22 +1,31 @@
+$nav-tabs-border-color: blue;
+$dropdown-link-color: purple;
+$body-bg: #ff4136;
+
 @import "~bootstrap/scss/bootstrap";
 
-body {
-  color: $gray-800;
-  background-color: $green-200;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
-.tabsContainer {
-  margin: 0;
-  
-}
+// body {
+//   color: $gray-800;
+//   background-color: $gray-200;
+//   font-family: Arial, Helvetica, sans-serif;
+// }
 
-.container {
-  padding: 0;
-}
+// .tabsContainer {
+//   margin: 0;
+// }
 
-.jobDisplay {
-  margin: 5px;
-  border: 1px solid black;
-  min-height: 100px;
-}
+// .container {
+//   padding: 0;
+// }
+
+// .jobDisplay {
+//   margin: 5px;
+//   border: 1px solid black;
+//   min-height: 100px;
+// }
+
+// .nav-tabs {
+//   border-color: $gray-800;
+// }
+

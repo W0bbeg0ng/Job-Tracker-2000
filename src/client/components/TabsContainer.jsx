@@ -53,7 +53,7 @@ class TabsContainer extends Component {
 
     return (
       <div className="tabs">
-        <ol className="tab-list">
+        <ol className="nav nav-tabs">
           {children.map((child) => {
             const { label } = child.props;
 

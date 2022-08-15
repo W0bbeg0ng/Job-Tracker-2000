@@ -5,11 +5,11 @@ import CompanyList from "./CompanyList"
 
 const Container = (props) => {
   return (
-   <div>
-    <h1>Tabs Test</h1>
+   <div className="container">
       
      <TabsContainer>
-       <div label = "Jobs">
+        <div label="Jobs">
+          
         <JobList />
        </div>
        <div label = "Companies">
