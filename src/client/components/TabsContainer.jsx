@@ -40,7 +40,7 @@ class TabsContainer extends Component {
 
     return (
       <div className="tabs">
-        <ol className="nav nav-tabs">
+        <ol className="nav nav-pills justify-content-center nav-justified">
           {children.map((child) => {
             const { label } = child.props;
 
