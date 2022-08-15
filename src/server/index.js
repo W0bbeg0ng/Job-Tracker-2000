@@ -9,7 +9,6 @@ const loginControllers = require('./routes/loginControllers');
 //jwt
 const dotenv = require('dotenv').config('../.env');
 const jwt = require('jsonwebtoken');
-//const JWT_SECRET = '0fjkkldfj838y8ryy92oihjfdjfhajkf2DKFEHIOjkdfAj5792jDfjkdfdDfldfkjajfkIEjodkfjkkbvnzadkjfatdjfkVNEujfjdk4810df0f9fd034Jdo34jlr3fd'
 
 app.use(express.json());
 app.use(cookieParser());
