@@ -7,7 +7,6 @@ import Login from "./components/Login"
 const LoginContainer = (props) => {
   return (
     <div>
-      {isAuthenticated && (<Navigate to="/" replace={true} />)}
       <Login />
     </div>
   )
