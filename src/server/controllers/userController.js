@@ -32,11 +32,7 @@ userController.postJob = (req, res, next) => {
   const jobQuery = 'INSERT INTO joblistings(jobtitle, url, status, note, user_id, company_id, starred, dateCreated) VALUES ($1,$2,$3,$4,(SELECT _id FROM users WHERE name = $5),(SELECT _id FROM company WHERE name = $6), $7, $8)';
   // 'INSERT INTO users (name) VALUES ($1)'
   db.query( jobQuery, arr )
-    .then((result) => {
-      console.log(result.rows);
-      res.locals.jobs = result.rows;
-      return next();
-    })
+    .then((result) => { return next(); })
     .catch(err => {
       return next({
         log: 'Express error handler caught in postJob middleware error',
