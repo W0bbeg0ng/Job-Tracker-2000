@@ -41,4 +41,7 @@ CREATE TABLE company (
   user_id bigint references users(_id)
 );
 
+![dataflow](https://user-images.githubusercontent.com/95673728/184781468-57197535-54be-47f9-b0d5-306bd91bb130.JPG)
+
+
 
