@@ -3,6 +3,7 @@ import TabsContainer from "./TabsContainer";
 import JobList from "./JobList";
 import CompanyList from "./CompanyList";
 import NewJobForm from "./NewJobForm";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 const test = {testList: [{
@@ -32,15 +33,22 @@ const test = {testList: [{
 
 const Container = (props) => {
 
+  
   const [data, setData] = useState([]);
+  const [isLoggedIn, setLoginState] = useState(null);
+  
 
   async function getJobData() {
     const response = await fetch("/api/jobs", 
     {method: "GET", 
      headers: {"Content-Type": "application/json"},
-
             }
     );
+    if (await response.status === 200) {
+      setLoginState(true);
+    } else if (await response.status === 401) {
+      setLoginState(false);
+    }
     const jobList = await response.json();
     console.log("jobList",jobList);
     // return data;
@@ -69,8 +77,8 @@ const Container = (props) => {
 
   },[])
   return (
-   <div className = "container">
-      
+    <div className="container">
+      {(isLoggedIn === false) && <Navigate to="/login" replace={true} />}
      <TabsContainer>
        <div label = "Jobs">
         <NewJobForm />
