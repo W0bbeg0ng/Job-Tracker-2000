@@ -42,3 +42,7 @@ CREATE TABLE company (
 );
 
 
+SECRET KEY
+1) In the root directory, create a file called ".env"
+2) In the .env file, write the text "JWT_SECRET=" and then include a string up to 128 characters
+   EXAMPLE: JWT_SECRET=fjkalkdfijeojfklmnf48749249fje8f29jfILOVETHISSTUFF8492er0fjg0jkjo2jfjf94
