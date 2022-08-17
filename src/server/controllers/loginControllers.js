@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const loginControllers = {};
 
-//INPUT: object => {user: 'string'}
+//INPUT: object => {name: 'string'}
 //OUTPUT: string => new user created
 loginControllers.createUser = (req, res, next) => {
   const { name } = req.body;
@@ -58,7 +58,7 @@ loginControllers.createToken = (req, res, next) => {
   console.log('here is the header', req.header);
   const { name } = req.body;
   
-  jwt.sign({name}, process.env.JWT_SECRET, { expiresIn: '72h'}, (err, token) => {
+  jwt.sign({name}, process.env.JWT_SECRET, { expiresIn: 30}, (err, token) => {
     res.locals.myToken = {token};
     console.log('TOKEN IS ', token);
     res.cookie('authorization', token, { HttpOnly: true});

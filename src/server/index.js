@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const port = 3000;
 const app = express();
 const loginControllers = require('./controllers/loginControllers');
-
 //jwt
 const dotenv = require('dotenv').config();
 const jwt = require('jsonwebtoken');
@@ -17,16 +16,16 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 
 const apiRouter = require('./routes/api');
 
-
 //loading of initial html single page source
 app.get('/', (req, res) => {
   return res.status(200).send('hello!');
 });
 
 //handles all router paths
-app.use('/api', apiRouter);
+app.use('/', apiRouter);
 
 app.post('/signup', loginControllers.createUser, (req, res) => {
+  console.log('WE HAVE ENTERED SIGN UP ROUTE HANDLER');
   return res.status(200).send('registered!');  //redirect to login
 });
 
