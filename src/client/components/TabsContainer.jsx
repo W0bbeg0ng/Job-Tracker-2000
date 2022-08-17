@@ -4,18 +4,13 @@ import CompanyList from './CompanyList.jsx';
 
 import Tab from './Tab'
 
-
-
-
-
 class TabsContainer extends Component {
  
-
   constructor(props) {
     super(props);
 
     this.state = {
-      activeTab: this.props.children[0].props.label,
+      activeTab: this.props.children[0].props.label, 
     };
   }
 
@@ -23,30 +18,22 @@ class TabsContainer extends Component {
     this.setState({ activeTab: tab });
   }
 
-
-
-
-
   render() {
     const {
-      onClickTabItem,
-      props: {
-        children,
-      },
-      state: {
-        activeTab,
-      }
+      onClickTabItem, // the function above
+      props: {children}, // Jobs, Companies -> the two child components of TabsContainer
+      state: {activeTab} // the object on line 12
     } = this;
 
     return (
       <div className="tabs">
         <ol className="nav nav-pills justify-content-center nav-justified">
           {children.map((child) => {
-            const { label } = child.props;
+            const { label } = child.props; // either Jobs or Companies - label: Jobs or label: Companies
 
             return (
               <Tab
-                activeTab={activeTab}
+                activeTab={activeTab} 
                 key={label}
                 label={label}
                 onClick={onClickTabItem}
