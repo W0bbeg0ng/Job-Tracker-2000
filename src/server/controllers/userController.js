@@ -33,10 +33,26 @@ userController.getJobs = (req, res, next) => {
 userController.postJob = (req, res, next) => {
   // grab all parameters user can post- even if it isnt inputted
   // check if company name exists in input- else create new company in company table
-  // const { jobTitle, url, status, note, company } = req.body;
-  // const jobQuery = 'SELECT joblistings.*, company.name AS company_id, FROM joblistings INNER JOIN '
 
-  return next();
+  const { jobTitle, url, status, note, company } = req.body;
+  const values = [jobTitle, url, status, note]; 
+  console.log(values);
+
+  const jobQuery = 'INSERT INTO jobListings(jobTitle, url, status, note) VALUES ($1, $2, $3, $4) RETURNING *';
+
+  db.query(jobQuery, values)
+    .then((result) => {
+      console.log("QUERY RESULT IS ", result.rows);
+      res.locals.newJob = result.rows;
+      return next();
+    })
+    .catch(err => {
+      return next({
+        log: 'Express error handler caught in getJobs middleware error',
+        status: 500,
+        message: { err: 'An error in getJobs' },
+      });
+    });
 };
 
 module.exports = userController;

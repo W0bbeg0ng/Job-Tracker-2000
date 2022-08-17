@@ -18,4 +18,4 @@ const JobList = (props) => {
     )
 }
 
-export default JobList;
+export default JobList; 
