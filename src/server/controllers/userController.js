@@ -42,7 +42,7 @@ userController.postJob = (req, res, next) => {
 
   db.query(jobQuery, values)
     .then((result) => {
-      console.log("QUERY RESULT IS ", result.rows);
+      console.log('QUERY RESULT IS ', result.rows);
       res.locals.newJob = result.rows;
       return next();
     })

@@ -7,7 +7,7 @@ const JobDisplay = (props) => {
         console.log("PROPS STATUS IN JOB DISPLAY: ", document.getElementById(props.status));
         const statusElement = document.getElementById(props.status);
         // statusElement.setAttribute("selected","selected");
-    }, []); //this may be causing our infinite loop --> add empty dipendancy array and see if that helps
+    }, []); 
     return (
         <div className="jobDisplay card">
             <div className="card-body">
