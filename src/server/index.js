@@ -7,8 +7,9 @@ const app = express();
 const loginControllers = require('./controllers/loginControllers');
 
 //jwt
-const dotenv = require('dotenv').config('../.env');
+const dotenv = require('dotenv').config();
 const jwt = require('jsonwebtoken');
+
 
 app.use(express.json());
 app.use(cookieParser());

@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 
 const loginControllers = {};
 
-
 //INPUT: object => {user: 'string'}
 //OUTPUT: string => new user created
 loginControllers.createUser = (req, res, next) => {
@@ -33,9 +32,6 @@ loginControllers.createUser = (req, res, next) => {
     });
 };
 
-
-
-
 //verifies user exists, sending them back to the signup page if they don't, and sending them to the main page if they do.
 //INPUT: object => {user: 'string'}
 //OUTPUT: 1)if not a user then send status 200 and redirect.  2) send object with user info {name, ect...} to next middleware.
@@ -49,7 +45,7 @@ loginControllers.verifyUser = (req, res, next) => {
       return next(); 
     })
     .catch(err => {
-      console.log('entered errror')
+      console.log('entered errror');
       return next({
         log: 'Express Error handler caught in verifyUser err',
         status: 500,
@@ -58,21 +54,17 @@ loginControllers.verifyUser = (req, res, next) => {
     });
 };
 
-
-
-
 loginControllers.createToken = (req, res, next) => {
-  console.log('entered create token');
   console.log('here is the header', req.header);
   const { name } = req.body;
+  
   jwt.sign({name}, process.env.JWT_SECRET, { expiresIn: '72h'}, (err, token) => {
     res.locals.myToken = {token};
-    console.log(token);
+    console.log('TOKEN IS ', token);
     res.cookie('authorization', token, { HttpOnly: true});
     next();
   });
 };
-
 
 loginControllers.checkForToken = (req, res, next) => {
   console.log('entered check for token');
